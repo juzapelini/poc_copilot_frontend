@@ -1,52 +1,43 @@
 /* Layout.css */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .layout-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  nav {
-    background-color: #007bff;
-    padding: 10px;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-right: 10px;
-  }
-  
-  nav ul li a, nav ul li button {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  nav ul li a:hover, nav ul li button:hover {
-    text-decoration: underline;
-  }
-  
-  .content {
-    flex: 1;
-    padding: 20px;
-    background-color: #f0f2f5;
-  }
-  
-  .logout-button {
-    color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  
-  .logout-button:hover {
-    text-decoration: underline;
-  }
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw; /* Adicionado para garantir que ocupe toda a largura */
+}
+
+nav {
+  background-color: #007bff;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a, nav ul li button {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  background: none;
+  border: none;
+}
+
+.main-content {
+  flex: 1; /* Adicionado para garantir que o conteúdo principal ocupe o espaço restante */
+  padding: 20px;
+  overflow: auto; /* Adicionado para permitir rolagem se o conteúdo for maior que a tela */
+}
