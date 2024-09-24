@@ -1,0 +1,33 @@
+/* Main.css */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  .main-container h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .main-container p {
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .main-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .main-container button:hover {
+    background-color: #0056b3;
+  }
