@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './modules/login/LoginPage';
-import Main from './modules/main/Main';
+import Main from './modules/main/MainPage';
 import UserManagement from './modules/userManagement/UserManagement';
 import ProtectedRoute from './routes/ProtectedRoute';
 import Layout from './components/common/Layout';
@@ -11,7 +11,10 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route 
+          path="/" 
+          element={<Login />} 
+        />
         <Route
           path="/main"
           element={

@@ -14,7 +14,8 @@ const LoginPage: React.FC = () => {
       const token = localStorage.getItem('token');
       const isValid = await checkToken(token);
       if (isValid) {
-        navigate('/main', { state: { email: 'user@example.com' } });
+        console.log("passou aqui")
+        navigate('/main', { state: { email: 'QUAL EMAILS' } });
       }
     };
 
