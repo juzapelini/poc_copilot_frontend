@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './modules/login/LoginPage';
 import Main from './modules/main/MainPage';
-import UserManagement from './modules/userManagement/UserManagement';
+import UserManagement from './modules/userManagement/UserManagementPage';
 import ProtectedRoute from './routes/ProtectedRoute';
 import Layout from './components/common/Layout';
 import NotFound from './modules/notFound/NotFound'; // Importe o novo componente
