@@ -8,7 +8,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:5001/users/logout', {
+      const response = await fetch('http://localhost:5001/auth/logout', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

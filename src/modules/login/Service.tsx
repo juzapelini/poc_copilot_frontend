@@ -4,7 +4,7 @@ export const checkToken = async (token: string | null): Promise<boolean> => {
 
   try {
 
-    const response = await fetch('http://localhost:5001/users/isLoggedIn', {
+    const response = await fetch('http://localhost:5001/auth/isLoggedIn', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -20,10 +20,10 @@ export const checkToken = async (token: string | null): Promise<boolean> => {
   }
 };
 
-export const login = async (email: string, password: string): Promise<{ token?: string, message?: string }> => {
+export const login = async (email: string, password: string): Promise<{ token?: string, message?: string, fullName?: string }> => {
   try {
 
-    const response = await fetch('http://localhost:5001/users/login', {
+    const response = await fetch('http://localhost:5001/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,9 +32,8 @@ export const login = async (email: string, password: string): Promise<{ token?: 
     });
 
     if (response.ok) {
-
       const data = await response.json();
-      return { token: data.token };
+      return { token: data.token, fullName: data.fullName }; // Return fullName along with token
     } else {
       const errorData = await response.json();
       return { message: errorData.message };

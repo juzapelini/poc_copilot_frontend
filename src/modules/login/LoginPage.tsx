@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { checkToken, login } from './Service';
 import './Style.css'; // Certifique-se de que o caminho está correto
 
+type LoginResponse = {
+  token?: string;
+  message?: string;
+  fullName?: string;
+};
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,20 +29,22 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await login(email, password);
+      const response: LoginResponse = await login(email, password);
       if (response.token) {
         localStorage.setItem('token', response.token);
+        if (response.fullName) {
+          localStorage.setItem('fullName', response.fullName); // Save fullName to localStorage
+        }
         navigate('/main', { state: { email } });
       } else {
         setError(response.message || 'Invalid email or password');
-        setTimeout(() => setError(''), 3000); // Limpa a mensagem de erro após 3 segundos
+        setTimeout(() => setError(''), 3000); // Clear error message after 3 seconds
       }
     } catch (err) {
       setError('An error occurred during login');
-      setTimeout(() => setError(''), 3000); // Limpa a mensagem de erro após 3 segundos
+      setTimeout(() => setError(''), 3000); // Clear error message after 3 seconds
     }
   };
-
   return (
     <div className="login-page">
       <h2>Login</h2>

@@ -17,7 +17,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
       }
 
       try {
-        const response = await fetch('http://localhost:5001/users/isLoggedIn', {
+        const response = await fetch('http://localhost:5001/auth/isLoggedIn', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,

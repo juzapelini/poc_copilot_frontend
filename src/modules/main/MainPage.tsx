@@ -1,14 +1,21 @@
-const Main: React.FC = () => {
-  const token = localStorage.getItem('token');
-  const email = localStorage.getItem('email');
+import React, { useEffect, useState } from 'react';
+
+const MainPage = () => {
+  const [fullName, setFullName] = useState('');
+
+  useEffect(() => {
+    const storedFullName = localStorage.getItem('fullName');
+    if (storedFullName) {
+      setFullName(storedFullName);
+    }
+  }, []);
 
   return (
-    <div className="main-container">
-      <h1>Bem-vindo!</h1>
-      {email && <p>Você está logado como: {email}</p>}
-      {email && <p>token: {token}</p>}
+    <div>
+      <h1>Welcome, {fullName}!</h1>
+      {/* Rest of your MainPage content */}
     </div>
   );
 };
 
-export default Main;
+export default MainPage;
