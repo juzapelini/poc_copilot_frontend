@@ -30,11 +30,8 @@ const UserManagement: React.FC = () => {
         {users.map(user => (
           <li key={user._id} className="user-list-item">
             <div className="user-info">
-              <span className="user-name">{user.fullName}</span>
-              <span className="user-email">{user.email}</span>
-            </div>
-            <div className="user-roles">
-              {user.roles.join(', ')}
+              <p>{user.fullName}</p>
+              <p>{user.email}</p>
             </div>
           </li>
         ))}
