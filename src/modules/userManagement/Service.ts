@@ -10,6 +10,15 @@ export interface User {
   email: string;
 }
 
+export interface CreateUserRequest {
+  fullName: string;
+  nickname: string;
+  roles: string[];
+  phone: string;
+  email: string;
+  password: string;
+}
+
 const API_BASE_URL = 'http://localhost:5001';
 
 export const fetchUsers = async (token: string): Promise<User[]> => {
@@ -20,6 +29,18 @@ export const fetchUsers = async (token: string): Promise<User[]> => {
   } catch (error) {
     
     console.error('Failed to fetch users:', error);
+    throw error;
+  }
+};
+
+
+
+export const createUser = async (token: string, userData: CreateUserRequest): Promise<void> => {
+  const client = new AuthenticatedHttpClient(token);
+  try {
+    await client.post(`${API_BASE_URL}/users`, userData);
+  } catch (error: any) {
+    console.error('::SERVICE:: Failed to create user:', error);
     throw error;
   }
 };
