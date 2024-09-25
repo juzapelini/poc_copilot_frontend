@@ -32,9 +32,11 @@ export const deleteUser = async (token: string, userId: string): Promise<void> =
   const client = new AuthenticatedHttpClient(token);
   try {
     const response = await client.delete<DeleteUserResponse>(`${API_BASE_URL}/users/${userId}`);
-    if (response.data && response.data.message) {
-      throw new Error(response.data.message);
-    }
+
+    // if (response.data && response.data.message) {
+    //   console.error('::SERVICE:: entrou aqui');
+    //   throw new Error(response.data.message);
+    // }
   } catch (error: any) {
     if (error.response && error.response.status === 404) {
       throw new Error('Usuário não encontrado!');

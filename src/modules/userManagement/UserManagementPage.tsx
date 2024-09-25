@@ -29,10 +29,12 @@ const UserManagementPage: React.FC = () => {
     try {
       if (token) {
         await deleteUser(token, userId);
-        setUsers(users.filter(user => user._id !== userId));
+        // Atualizar a lista de usuários após a exclusão bem-sucedida
+        const updatedUsers = users.filter(user => user._id !== userId);
+        setUsers(updatedUsers);
       }
     } catch (error: any) {
-      const errorMessage = error.message || 'Failed to delete user';
+      const errorMessage = error.response?.data?.message || 'Failed to delete user';
       setError(errorMessage);
       setTimeout(() => setError(null), 3000);
       console.error('Failed to delete user:', error);
@@ -46,6 +48,7 @@ const UserManagementPage: React.FC = () => {
       <table className="user-table">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Full Name</th>
             <th>Nickname</th>
             <th>Roles</th>
@@ -57,6 +60,7 @@ const UserManagementPage: React.FC = () => {
         <tbody>
           {users.map(user => (
             <tr key={user._id}>
+              <td>{user._id}</td>
               <td>{user.fullName}</td>
               <td>{user.nickname}</td>
               <td>{user.roles.join(', ')}</td>

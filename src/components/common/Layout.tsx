@@ -21,6 +21,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       }
 
       localStorage.removeItem('token');
+      localStorage.removeItem('fullName');
       navigate('/');
     } catch (error) {
       console.error('Error during logout:', error);
